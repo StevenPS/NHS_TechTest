@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nhs-blue: #005eb8;
+  --color-nhs-dark-blue: #003087;
+  --color-nhs-green: #007f3b;
+  --color-nhs-red: #d5281b;
+  --color-nhs-yellow: #ffeb3b;
+}
+
+/* Visible keyboard focus everywhere (NHS-style yellow focus ring). */
+:focus-visible {
+  outline: 3px solid var(--color-nhs-yellow);
+  outline-offset: 0;
+  box-shadow: 0 4px 0 0 #212b32;
+}
