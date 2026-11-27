@@ -33,7 +33,19 @@ client/                          Vite + React SPA
 - Node.js 22.22+ (developed on Node 26 LTS)
 - SQL Server LocalDB, which ships with Visual Studio or the SQL Server Express installer
 
-## Run locally
+## Scripts
+
+PowerShell scripts in [`scripts/`](scripts/) wrap the common tasks. They work in Windows PowerShell 5.1 and in PowerShell 7 (`pwsh`):
+
+| Script | What it does |
+|---|---|
+| `.\scripts\build.ps1 [-Configuration Release]` | Restores tools, builds the .NET solution, installs client packages if needed, builds the client |
+| `.\scripts\test.ps1 [-SkipClient]` | Runs `dotnet test`, then lints and type-checks the client |
+| `.\scripts\start.ps1 [-SkipMigrations]` | Applies migrations, starts the API in the background and the client in the foreground; Ctrl+C stops both |
+
+If script execution is blocked on your machine, run a script with `powershell -ExecutionPolicy Bypass -File .\scripts\start.ps1`.
+
+## Run locally (manual steps)
 
 ```bash
 # 1. Restore the local EF Core CLI tool
