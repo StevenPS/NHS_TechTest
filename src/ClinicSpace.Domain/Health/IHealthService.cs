@@ -1,4 +1,4 @@
-namespace ClinicSpace.Application.Health;
+namespace ClinicSpace.Domain.Health;
 
 public interface IHealthService
 {

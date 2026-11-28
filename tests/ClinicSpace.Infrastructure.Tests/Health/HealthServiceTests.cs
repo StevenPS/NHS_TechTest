@@ -1,9 +1,9 @@
-using ClinicSpace.Application.Health;
-using ClinicSpace.Application.Tests.TestSupport;
+using ClinicSpace.Infrastructure.Health;
+using ClinicSpace.Infrastructure.Tests.TestSupport;
 using ClinicSpace.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClinicSpace.Application.Tests.Health;
+namespace ClinicSpace.Infrastructure.Tests.Health;
 
 public class HealthServiceTests
 {

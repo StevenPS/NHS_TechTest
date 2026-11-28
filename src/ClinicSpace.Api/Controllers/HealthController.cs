@@ -1,5 +1,5 @@
 using ClinicSpace.Api.Contracts;
-using ClinicSpace.Application.Health;
+using ClinicSpace.Domain.Health;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicSpace.Api.Controllers;

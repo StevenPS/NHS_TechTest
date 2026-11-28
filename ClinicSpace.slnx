@@ -1,14 +1,11 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/ClinicSpace.Domain/ClinicSpace.Domain.csproj" />
-    <Project Path="src/ClinicSpace.Application/ClinicSpace.Application.csproj" />
     <Project Path="src/ClinicSpace.Infrastructure/ClinicSpace.Infrastructure.csproj" />
     <Project Path="src/ClinicSpace.Api/ClinicSpace.Api.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/ClinicSpace.Application.Tests/ClinicSpace.Application.Tests.csproj" />
     <Project Path="tests/ClinicSpace.Infrastructure.Tests/ClinicSpace.Infrastructure.Tests.csproj" />
-    <Project Path="tests/ClinicSpace.Api.Tests/ClinicSpace.Api.Tests.csproj" />
   </Folder>
   <Folder Name="/solution items/">
     <File Path="Directory.Build.props" />

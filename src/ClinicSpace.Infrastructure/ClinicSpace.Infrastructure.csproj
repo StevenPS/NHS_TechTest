@@ -7,7 +7,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClinicSpace.Application\ClinicSpace.Application.csproj" />
+    <ProjectReference Include="..\ClinicSpace.Domain\ClinicSpace.Domain.csproj" />
   </ItemGroup>
 
 </Project>
