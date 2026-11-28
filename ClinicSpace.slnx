@@ -7,6 +7,7 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/ClinicSpace.Application.Tests/ClinicSpace.Application.Tests.csproj" />
+    <Project Path="tests/ClinicSpace.Infrastructure.Tests/ClinicSpace.Infrastructure.Tests.csproj" />
     <Project Path="tests/ClinicSpace.Api.Tests/ClinicSpace.Api.Tests.csproj" />
   </Folder>
   <Folder Name="/solution items/">
