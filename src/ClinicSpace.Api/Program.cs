@@ -1,5 +1,4 @@
 using ClinicSpace.Api.Controllers;
-using ClinicSpace.Application;
 using ClinicSpace.Infrastructure;
 using ClinicSpace.Infrastructure.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +21,6 @@ builder.Services.AddControllers(options =>
 builder.Services.AddMvcCore().AddViews();
 builder.Services.AddOpenApi();
 
-builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
@@ -44,6 +42,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-// Exposed for WebApplicationFactory in ClinicSpace.Api.Tests.
-public partial class Program;

@@ -2,7 +2,7 @@ using ClinicSpace.Infrastructure.Persistence;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClinicSpace.Application.Tests.TestSupport;
+namespace ClinicSpace.Infrastructure.Tests.TestSupport;
 
 /// <summary>
 /// A real <see cref="AppDbContext"/> backed by an in-memory SQLite database.

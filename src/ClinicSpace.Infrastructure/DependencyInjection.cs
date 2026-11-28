@@ -1,5 +1,6 @@
-using ClinicSpace.Application.Abstractions;
 using ClinicSpace.Domain.Auth;
+using ClinicSpace.Domain.Health;
+using ClinicSpace.Infrastructure.Health;
 using ClinicSpace.Infrastructure.Identity;
 using ClinicSpace.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http;
@@ -24,7 +25,7 @@ public static class DependencyInjection
                 configuration.GetConnectionString(ConnectionStringName)
                 ?? throw new InvalidOperationException($"Connection string '{ConnectionStringName}' is not configured.")));
 
-        services.AddScoped<IAppDbContext>(sp => sp.GetRequiredService<AppDbContext>());
+        services.AddScoped<IHealthService, HealthService>();
 
         services.AddClinicSpaceIdentity();
 

@@ -1,8 +1,9 @@
-using ClinicSpace.Application.Abstractions;
+using ClinicSpace.Domain.Health;
+using ClinicSpace.Infrastructure.Persistence;
 
-namespace ClinicSpace.Application.Health;
+namespace ClinicSpace.Infrastructure.Health;
 
-public sealed class HealthService(IAppDbContext db) : IHealthService
+public sealed class HealthService(AppDbContext db) : IHealthService
 {
     public async Task<HealthReport> CheckAsync(CancellationToken cancellationToken = default)
     {
