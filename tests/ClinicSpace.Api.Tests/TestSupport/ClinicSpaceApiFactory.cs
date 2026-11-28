@@ -1,3 +1,4 @@
+using ClinicSpace.Infrastructure.Identity;
 using ClinicSpace.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -13,7 +14,8 @@ using Microsoft.Extensions.Logging;
 namespace ClinicSpace.Api.Tests.TestSupport;
 
 /// <summary>
-/// Hosts the real API in memory, with SQL Server swapped for a shared in-memory SQLite database.
+/// Hosts the real API in memory, with SQL Server swapped for a shared in-memory SQLite database
+/// seeded with the demo users.
 /// </summary>
 public sealed class ClinicSpaceApiFactory : WebApplicationFactory<Program>
 {
@@ -22,7 +24,10 @@ public sealed class ClinicSpaceApiFactory : WebApplicationFactory<Program>
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Testing");
-        builder.ConfigureLogging(logging => logging.SetMinimumLevel(LogLevel.Warning));
+        // Category filters, because appsettings.json's "Default": "Information" outranks SetMinimumLevel.
+        builder.ConfigureLogging(logging => logging
+            .AddFilter("Microsoft", LogLevel.Warning)
+            .AddFilter("System", LogLevel.Warning));
 
         builder.ConfigureTestServices(services =>
         {
@@ -40,6 +45,7 @@ public sealed class ClinicSpaceApiFactory : WebApplicationFactory<Program>
 
         using var scope = host.Services.CreateScope();
         scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.EnsureCreated();
+        scope.ServiceProvider.GetRequiredService<DevDataSeeder>().SeedAsync().GetAwaiter().GetResult();
 
         return host;
     }

@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from 'react-router'
+import { NavLink, Outlet, useNavigate } from 'react-router'
+import { useAuth } from '../auth/authContext'
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   [
@@ -7,6 +8,17 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   ].join(' ')
 
 export function Layout() {
+  const { state, signOut } = useAuth()
+  const navigate = useNavigate()
+
+  async function handleSignOut() {
+    try {
+      await signOut()
+    } finally {
+      navigate('/sign-in', { replace: true })
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900">
       <a
@@ -21,15 +33,31 @@ export function Layout() {
           <NavLink to="/" className="text-xl font-bold tracking-tight text-white no-underline">
             MPFT Clinic Space
           </NavLink>
-          <nav aria-label="Main">
-            <ul className="flex gap-2">
-              <li>
-                <NavLink to="/" end className={navLinkClass}>
-                  Home
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
+          {state.status === 'authenticated' && (
+            <div className="flex flex-wrap items-center gap-4">
+              {/* Role-specific links (My requests, All requests, ...) arrive with the pages in Steps 3 to 5. */}
+              <nav aria-label="Main">
+                <ul className="flex gap-2">
+                  <li>
+                    <NavLink to="/" end className={navLinkClass}>
+                      Home
+                    </NavLink>
+                  </li>
+                </ul>
+              </nav>
+              <p className="text-sm">
+                <span className="sr-only">Signed in as </span>
+                <span className="font-semibold">{state.user.fullName}</span> ({state.user.role})
+              </p>
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className="rounded border-2 border-white px-3 py-1 font-semibold text-white hover:bg-white hover:text-nhs-blue"
+              >
+                Sign out
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
